@@ -6,12 +6,12 @@ import { ConnectedRouter } from 'react-router-redux';
 
 import App from '../components/App';
 
-export default function Root({store, history}) {
+export default function Root({ store, history }) {
     return (
         <Provider store={store}>
             <div>
                 <ConnectedRouter history={history}>
-                    <Route path="/" component={App}/>
+                    <Route path="/" component={App} />
                 </ConnectedRouter>
             </div>
         </Provider>
@@ -20,5 +20,5 @@ export default function Root({store, history}) {
 
 Root.propTypes = {
     store: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired
+    history: PropTypes.object.isRequired,
 };
