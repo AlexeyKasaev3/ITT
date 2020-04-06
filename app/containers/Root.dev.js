@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Provider } from 'react-redux';
-import { Switch, Route, Redirect, Link } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
 
 import { TickerInfo } from '../containers';
+import { Header } from '../components';
 import { PageNotFound } from '../components';
 import DevTools from './DevTools';
 import * as tickerService from '../services';
@@ -19,13 +20,7 @@ export default function Root({ store, history }) {
             <div>
                 <ConnectedRouter history={history}>
                     <div>
-                        <div>
-                            {tickersList.map((ticker) => (
-                                <Link to={`/${ticker}`} key={ticker}>
-                                    {ticker}
-                                </Link>
-                            ))}
-                        </div>
+                        <Header tickers={tickersList} />
                         <Switch>
                             <Redirect
                                 exact

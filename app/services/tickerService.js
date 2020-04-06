@@ -15,10 +15,12 @@ export const subscribeOnTicker = (stockSymbol, executeOnSocketOn) => {
     socket.emit('ticker', stockSymbol);
 
     socket.on(stockSymbol, (data) => {
+        console.log(data);
         executeOnSocketOn(data);
     });
 };
 
 export const unsubscribeFromTicker = (stockSymbol) => {
+    console.log('OFF', stockSymbol);
     socket.off(stockSymbol);
 };
