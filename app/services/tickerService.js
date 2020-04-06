@@ -19,7 +19,6 @@ export const subscribeOnTicker = (stockSymbol, executeOnSocketOn) => {
     });
 };
 
-export const unsubscribeFromTicker = (stockSymbol, executeOnSocketOff) => {
+export const unsubscribeFromTicker = (stockSymbol) => {
     socket.off(stockSymbol);
-    executeOnSocketOff();
 };

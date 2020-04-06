@@ -1,7 +1,15 @@
+import { combineReducers } from 'redux';
+
 const stockTicker = (state = {}, action) => {
     switch (action.type) {
-        case 'CONNECT_TO_DATA_SOURSE':
-            return JSON.parse(action.payload);
+        case 'GET_TICKER_DATA':
+            const payloadObject = JSON.parse(action.payload);
+            let priceChangeDirection = 'NONE';
+            if (state.change && payloadObject.change !== 0) {
+                priceChangeDirection = priceChangeDirection =
+                    state.price - payloadObject.price > 0 ? 'DOWN' : 'UP';
+            }
+            return { ...payloadObject, priceChangeDirection };
         case 'DISCONNECT_FROM_DATA_SOURCE':
             return {};
         default:
@@ -9,4 +17,4 @@ const stockTicker = (state = {}, action) => {
     }
 };
 
-export default stockTicker;
+export default combineReducers({ stockTicker });

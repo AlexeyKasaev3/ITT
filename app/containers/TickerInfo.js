@@ -6,7 +6,7 @@ import * as actions from '../actions';
 class TickerInfo extends Component {
     componentDidMount() {
         console.log('TickerInfo - componentDidMount');
-        this.props.connectToDataSourse();
+        this.props.subscribeOnTicker();
     }
 
     componentDidUpdate() {
@@ -15,7 +15,7 @@ class TickerInfo extends Component {
 
     componentWillUnmount() {
         console.log('TickerInfo - componentWillUnmount');
-        this.props.disconnectFromDataSource();
+        this.props.unsubscribeFromTicker();
     }
 
     render() {
@@ -29,21 +29,21 @@ class TickerInfo extends Component {
 }
 
 TickerInfo.propTypes = {
-    connectToDataSourse: PropTypes.func.isRequired,
-    disconnectFromDataSource: PropTypes.func.isRequired,
+    subscribeOnTicker: PropTypes.func.isRequired,
+    unsubscribeFromTicker: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (storeState, ownProps) => {
     return {
-        storeState,
+        stockTicker: storeState.stockTicker,
         ...ownProps,
     };
 };
 
 const mapDispatchToProps = (dispatch, { ticker }) => {
     return {
-        connectToDataSourse: () => dispatch(actions.subscribeOnTicker(ticker)),
-        disconnectFromDataSource: () =>
+        subscribeOnTicker: () => dispatch(actions.subscribeOnTicker(ticker)),
+        unsubscribeFromTicker: () =>
             dispatch(actions.unsubscribeFromTicker(ticker)),
     };
 };
