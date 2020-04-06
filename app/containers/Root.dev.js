@@ -7,10 +7,13 @@ import { ConnectedRouter } from 'react-router-redux';
 import { TickerInfo } from '../containers';
 import { PageNotFound } from '../components';
 import DevTools from './DevTools';
+import * as tickerService from '../services';
 
 import { tickersList } from '../static/constants';
 
 export default function Root({ store, history }) {
+    tickerService.connectToSocket();
+
     return (
         <Provider store={store}>
             <div>

@@ -1,1 +1,1 @@
-export { TickerInfo } from './TickerInfo';
+export { ConnectedTickerInfo as TickerInfo } from './TickerInfo';
