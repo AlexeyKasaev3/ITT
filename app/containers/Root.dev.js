@@ -8,13 +8,10 @@ import { TickerInfo } from '../containers';
 import { Header } from '../components';
 import { PageNotFound } from '../components';
 import DevTools from './DevTools';
-import * as tickerService from '../services';
 
 import { tickersList } from '../static/constants';
 
 export default function Root({ store, history }) {
-    tickerService.connectToSocket();
-
     return (
         <Provider store={store}>
             <div>
