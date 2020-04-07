@@ -1,21 +1,13 @@
 import io from 'socket.io-client';
+import { tickerServerURL } from '../static/constants';
 
 let socket = null;
 
-export const connect = (stockSymbol) => {
-    socket = io('http://localhost:4000');
+export const getSocket = () => {
+    return socket ? socket : (socket = io(tickerServerURL));
+};
 
-    socket.on('connect', () => {
-        console.log('connected');
-
-        socket.on(stockSymbol, (data) => {
-            console.log(data);
-        });
-
-        socket.emit('ticker', stockSymbol);
-    });
-
-    socket.on('disconnect', () => {
-        console.log('disconnected');
-    });
+export const closeSocket = () => {
+    socket.close();
+    socket = null;
 };

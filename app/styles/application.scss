@@ -1,3 +1,176 @@
-.stock-ticker {
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap');
 
+html,
+body,
+ul,
+li {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+header,
+nav,
+main {
+    display: block;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    background: #000;
+    padding: 25px;
+    margin-bottom: 25px;
+
+    nav {
+        margin: 0 -10px -20px -10px;
+    }
+
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    li {
+        margin: 0 10px 20px 10px;
+
+        a {
+            display: flex;
+            min-height: 30px;
+            min-width: 100px;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            font-size: 14px;
+            letter-spacing: 2px;
+            font-weight: 300;
+
+            &.active {
+                font-weight: 900;
+            }
+        }
+    }
+}
+
+.view-login {
+    width: 70%;
+}
+
+.tickerInfoRoot {
+    max-width: 500px;
+    margin: 0 auto 25px auto;
+
+    .header {
+        background-color: #8bc34a;
+        color: white;
+        text-align: center;
+        padding: 3px 10px;
+
+        h1 {
+            display: inline;
+        }
+    }
+
+    .tickerInfoBodyWrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 0 10px;
+        background-color: #f5f5f5;
+
+        h2 {
+            font-size: 10px;
+            padding: 5px 0 0 5px;
+        }
+
+        .tickerInfoItemValue {
+            display: flex;
+            min-height: 60px;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            font-weight: 300;
+        }
+
+        .priceChangeItem {
+            transition: 0.4s;
+
+            &.UP {
+                background-color: #c8e6c9;
+            }
+
+            &.DOWN {
+                background-color: #ffcdd2;
+            }
+        }
+    }
+}
+
+.fetchIntervalSelector {
+    max-width: 500px;
+    margin: auto;
+
+    .fetchIntervalSelector__title {
+        height: 40px;
+        background: #000;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-weight: 300;
+        font-size: 14px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .fetchIntervalSelector__panel {
+        display: flex;
+        font-weight: 300;
+        font-size: 14px;
+        transform: translateY(-100%);
+        transition: transform 0.2s;
+
+        &.open {
+            transform: translateY(0);
+        }
+
+        li {
+            display: flex;
+            flex-grow: 1;
+            height: 40px;
+            background: #000;
+            color: #fff;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-sizing: border-box;
+
+            &.active {
+                background: #fff;
+                color: #000;
+                border: 5px solid #000;
+            }
+        }
+    }
 }
