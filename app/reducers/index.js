@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { defaultFetchInterval } from '../static/constants';
 
 const stockTicker = (state = {}, action) => {
     switch (action.type) {
@@ -17,4 +18,13 @@ const stockTicker = (state = {}, action) => {
     }
 };
 
-export default combineReducers({ stockTicker });
+const fetchInterval = (state = defaultFetchInterval, action) => {
+    switch (action.type) {
+        case 'CHANGE_FETCH_INTERVAL':
+            return action.payload;
+        default:
+            return state;
+    }
+};
+
+export default combineReducers({ stockTicker, fetchInterval });
