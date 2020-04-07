@@ -8,6 +8,7 @@ import { TickerInfo } from '../containers';
 import { Header } from '../components';
 import { PageNotFound } from '../components';
 import DevTools from './DevTools';
+import { FetchIntervalSelector } from '../containers';
 
 import { tickersList } from '../static/constants';
 
@@ -40,6 +41,7 @@ export default function Root({ store, history }) {
                             ))}
                             <Route path="*" key="*" component={PageNotFound} />
                         </Switch>
+                        <FetchIntervalSelector />
                     </div>
                 </ConnectedRouter>
                 <DevTools />

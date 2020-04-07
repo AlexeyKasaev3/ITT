@@ -3,7 +3,7 @@
 ////
 // CONFIGURATION SETTINGS
 ////
-var FETCH_INTERVAL = 500;
+var FETCH_INTERVAL = 5000;
 var PRETTY_PRINT_JSON = true;
 
 ////
@@ -57,7 +57,7 @@ function getQuote(socket, ticker) {
     );
 }
 
-function trackTicker(socket, ticker) {
+function trackTicker(socket, ticker, fetchInterval) {
     console.log('track Ticker');
 
     // run the first time immediately
@@ -66,7 +66,15 @@ function trackTicker(socket, ticker) {
     // every N seconds
     var timer = setInterval(function () {
         getQuote(socket, ticker);
-    }, FETCH_INTERVAL);
+    }, fetchInterval || FETCH_INTERVAL);
+
+    socket.on('fetch interval change', function (fetchInterval) {
+        clearInterval(timer);
+        getQuote(socket, ticker);
+        timer = setInterval(function () {
+            getQuote(socket, ticker);
+        }, fetchInterval);
+    });
 
     socket.on('disconnect', function () {
         clearInterval(timer);
@@ -85,8 +93,8 @@ app.get('/', function (req, res) {
 });
 
 io.sockets.on('connection', function (socket) {
-    socket.on('ticker', function (ticker) {
-        trackTicker(socket, ticker);
+    socket.on('ticker', function (ticker, fetchInterval) {
+        trackTicker(socket, ticker, fetchInterval);
     });
 });
 

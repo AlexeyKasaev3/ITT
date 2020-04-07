@@ -34,8 +34,7 @@ const mapStateToProps = (storeState, ownProps) => {
 const mapDispatchToProps = (dispatch, { ticker }) => {
     return {
         subscribeOnTicker: () => dispatch(actions.subscribeOnTicker(ticker)),
-        unsubscribeFromTicker: () =>
-            dispatch(actions.unsubscribeFromTicker(ticker)),
+        unsubscribeFromTicker: () => dispatch(actions.unsubscribeFromTicker()),
     };
 };
 

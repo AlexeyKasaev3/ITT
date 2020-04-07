@@ -23,22 +23,20 @@ export const TickerInfo = ({ tickerData }) => {
                     'Loading'
                 )}
             </div>
-            {isTickerDataExists(tickerData) ? (
-                <div className="tickerInfoBodyWrapper">
-                    <div>
-                        <h2>price</h2>
-                        <div className="tickerInfoItemValue">{price}$</div>
-                    </div>
-                    <div className={`priceChangeItem ${priceChangeDirection}`}>
-                        <h2>change</h2>
-                        <div className="tickerInfoItemValue">
-                            {priceChangeDirection === 'UP' ? '+' : ''}
-                            {priceChangeDirection === 'DOWN' ? '-' : ''}
-                            {change}$
-                        </div>
+            <div className="tickerInfoBodyWrapper">
+                <div>
+                    <h2>price</h2>
+                    <div className="tickerInfoItemValue">{price}$</div>
+                </div>
+                <div className={`priceChangeItem ${priceChangeDirection}`}>
+                    <h2>change</h2>
+                    <div className="tickerInfoItemValue">
+                        {priceChangeDirection === 'UP' ? '+' : ''}
+                        {priceChangeDirection === 'DOWN' ? '-' : ''}
+                        {change}$
                     </div>
                 </div>
-            ) : null}
+            </div>
         </div>
     );
 };

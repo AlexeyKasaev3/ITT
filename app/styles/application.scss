@@ -79,7 +79,7 @@ header {
 
 .tickerInfoRoot {
     max-width: 500px;
-    margin: auto;
+    margin: 0 auto 25px auto;
 
     .header {
         background-color: #8bc34a;
@@ -121,6 +121,55 @@ header {
 
             &.DOWN {
                 background-color: #ffcdd2;
+            }
+        }
+    }
+}
+
+.fetchIntervalSelector {
+    max-width: 500px;
+    margin: auto;
+
+    .fetchIntervalSelector__title {
+        height: 40px;
+        background: #000;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-weight: 300;
+        font-size: 14px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .fetchIntervalSelector__panel {
+        display: flex;
+        font-weight: 300;
+        font-size: 14px;
+        transform: translateY(-100%);
+        transition: transform 0.2s;
+
+        &.open {
+            transform: translateY(0);
+        }
+
+        li {
+            display: flex;
+            flex-grow: 1;
+            height: 40px;
+            background: #000;
+            color: #fff;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-sizing: border-box;
+
+            &.active {
+                background: #fff;
+                color: #000;
+                border: 5px solid #000;
             }
         }
     }
